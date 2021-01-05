@@ -30,7 +30,7 @@ treatment selection bias and will not use propensity scores weighting. It can be
 in data from a randized controlled trial (RCT) where there is no need for emulation of baseline randomization.
 Other possible values are "stab.ATE", "ATE", "ATT", "ATC" and "overlap".
 See Table 1 from Li, Morgan, and Zaslavsky (2018).
-"stab.ATE" is defined as P(A=a)/P(A=a|C=c) - see Hernan et al. (2000).}
+"stab.ATE" is defined as P(A=a)/P(A=a|C=c) - see Hernán et al. (2000).}
 
 \item{cens}{an integer value in \code{E} that corresponds to censoring times recorded in \code{X}.
 By default \code{fit.nonpar} assumes \code{cens}=0}

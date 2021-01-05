@@ -52,7 +52,7 @@
 #' that will estimate treatment effects in the raw (observed) data.
 #' @param wtype a character string variable indicating the type of weights that will define the target
 #' population for which the ATE will be estimated.
-#' The default is "stab.ATE" defined as P(A=a)/P(A=a|C=c) - see Hernan et al. (2000).
+#' The default is "stab.ATE" defined as P(A=a)/P(A=a|C=c) - see Hernán et al. (2000).
 #' Other possible values are "ATE", "ATT", "ATC", and "overlap".
 #' See Table 1 from Li, Morgan, and Zaslavsky (2018).
 #' @param case.w a vector of case weights.
@@ -66,7 +66,7 @@
 #'  using \code{stats::glm}} function
 #'
 #' @references F. Li, K.L. Morgan, and A.M. Zaslavsky. 2018. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
-#' @references M. Hernan, K.L. Morgan, and A.M. Zaslavsky. 2000. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
+#' @references M.A. Hernán, B. Brumback, and J.M. Robins. 2000. Marginal structural models and to estimate the causal effect of zidovudine on the survival of HIV-positive men. Epidemiology, 11 (5): 561-570.
 #'
 #' @seealso \code{\link{fit.nonpar}}, \code{\link{fit.cox}}, \code{\link{causalCmprsk}}
 #' @examples
@@ -162,7 +162,7 @@ get.weights <- function(df, A, C, wtype="stab.ATE", case.w=NULL)
 #' in data from a randized controlled trial (RCT) where there is no need for emulation of baseline randomization.
 #' Other possible values are "stab.ATE", "ATE", "ATT", "ATC" and "overlap".
 #' See Table 1 from Li, Morgan, and Zaslavsky (2018).
-#' "stab.ATE" is defined as P(A=a)/P(A=a|C=c) - see Hernan et al. (2000).
+#' "stab.ATE" is defined as P(A=a)/P(A=a|C=c) - see Hernán et al. (2000).
 #' @param cens an integer value in \code{E} that corresponds to censoring times recorded in \code{X}.
 #' By default \code{fit.nonpar} assumes \code{cens}=0
 #'
@@ -1393,7 +1393,7 @@ get.pointEst <- function(cmprsk.obj, timepoint) # assumes timepoint is a scalar
 #' in data from a randized controlled trial (RCT) where there is no need for emulation of baseline randomization.
 #' Other possible values are "stab.ATE", "ATE", "ATT", "ATC" and "overlap".
 #' See Table 1 from Li, Morgan, and Zaslavsky (2018).
-#' "stab.ATE" is defined as P(A=a)/P(A=a|C=c) - see Hernan et al. (2000).
+#' "stab.ATE" is defined as P(A=a)/P(A=a|C=c) - see Hernán et al. (2000).
 #' @param cens an integer value in \code{E} that corresponds to censoring times recorded in \code{X}.
 #' By default \code{fit.nonpar} assumes \code{cens}=0
 #' @param conf.level the confidence level that will be used in the bootstrap confidence intervals.
@@ -1480,8 +1480,8 @@ get.pointEst <- function(cmprsk.obj, timepoint) # assumes timepoint is a scalar
 #'
 #' # please see our package vignette for practical examples
 #'
-#' @references F. Li, K.L. Morgan, and A.M. Zaslavsky. 2018. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
-#' @references M. Hernan, K.L. Morgan, and A.M. Zaslavsky. 2000. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
+#' @references F. Li, K.L. Morgan, and A.M. Zaslavsky. 2018. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association, 113 (521): 390–400.
+#' @references M.A. Hernán, B. Brumback, and J.M. Robins. 2000. Marginal structural models and to estimate the causal effect of zidovudine on the survival of HIV-positive men. Epidemiology, 11 (5): 561-570.
 #'
 #'
 #' @export
@@ -1546,7 +1546,7 @@ fit.cox <- function(df, X, E, A, C=NULL, wtype="unadj", cens=0, conf.level=0.95,
 #' in data from a randized controlled trial (RCT) where there is no need for emulation of baseline randomization.
 #' Other possible values are "stab.ATE", "ATE", "ATT", "ATC" and "overlap".
 #' See Table 1 from Li, Morgan, and Zaslavsky (2018).
-#' "stab.ATE" is defined as P(A=a)/P(A=a|C=c) - see Hernan et al. (2000).
+#' "stab.ATE" is defined as P(A=a)/P(A=a|C=c) - see Hernán et al. (2000).
 #' @param cens an integer value in \code{E} that corresponds to censoring times recorded in \code{X}.
 #' By default \code{fit.nonpar} assumes \code{cens}=0
 #' @param conf.level the confidence level that will be used in the bootstrap confidence intervals.
@@ -1634,7 +1634,7 @@ fit.cox <- function(df, X, E, A, C=NULL, wtype="unadj", cens=0, conf.level=0.95,
 #' # please see our package vignette for practical examples
 #'
 #' @references F. Li, K.L. Morgan, and A.M. Zaslavsky. 2018. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
-#' @references M. Hernan, K.L. Morgan, and A.M. Zaslavsky. 2000. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
+#' @references M.A. Hernán, B. Brumback, and J.M. Robins. 2000. Marginal structural models and to estimate the causal effect of zidovudine on the survival of HIV-positive men. Epidemiology, 11 (5): 561-570.
 #'
 #' @export
 fit.nonpar <- function(df, X, E, A, C=NULL, wtype="unadj", cens=0, conf.level=0.95, bs=FALSE, nbs.rep=400, seed=17, parallel = FALSE, verbose=FALSE){

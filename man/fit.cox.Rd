@@ -44,7 +44,7 @@ treatment selection bias and will not use propensity scores weighting. It can be
 in data from a randized controlled trial (RCT) where there is no need for emulation of baseline randomization.
 Other possible values are "stab.ATE", "ATE", "ATT", "ATC" and "overlap".
 See Table 1 from Li, Morgan, and Zaslavsky (2018).
-"stab.ATE" is defined as P(A=a)/P(A=a|C=c) - see Hernan et al. (2000).}
+"stab.ATE" is defined as P(A=a)/P(A=a|C=c) - see Hernán et al. (2000).}
 
 \item{cens}{an integer value in \code{E} that corresponds to censoring times recorded in \code{X}.
 By default \code{fit.nonpar} assumes \code{cens}=0}
@@ -148,9 +148,9 @@ cox.pe$trt.eff[[1]]$RD #-0.1894038
 
 }
 \references{
-F. Li, K.L. Morgan, and A.M. Zaslavsky. 2018. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
+F. Li, K.L. Morgan, and A.M. Zaslavsky. 2018. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association, 113 (521): 390–400.
 
-M. Hernan, K.L. Morgan, and A.M. Zaslavsky. 2000. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
+M.A. Hernán, B. Brumback, and J.M. Robins. 2000. Marginal structural models and to estimate the causal effect of zidovudine on the survival of HIV-positive men. Epidemiology, 11 (5): 561-570.
 }
 \seealso{
 \code{\link{fit.nonpar}}, \code{\link{get.pointEst}}, \code{\link{causalCmprsk}}

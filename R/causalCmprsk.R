@@ -1,6 +1,6 @@
 #' Estimation of Average Treatment Effects (ATE) on Time-to-Event Outcomes with Competing Events
 #'
-#' The package accompanies the paper of Charpignon et al. (2020).
+#' The package accompanies the paper of Charpignon et al. (2021).
 #' It can be applied to data with any number of competing events, including the case of only one type of event.
 #' The method uses propensity scores weighting for emulation of baseline randomization.
 #' The package implements different types of weights: ATE, stabilized ATE,
@@ -21,7 +21,7 @@
 #'
 #'
 #' @references A.F. Connors, T. Speroff, N.V. Dawson, C. Thomas, F.E. Harrell, D. Wagner, N. Desbiens, et al. 1996. The Effectiveness of Right Heart Catheterization in the Initial Care of Critically Ill Patients. Journal of the American Medical Association 276: 889–97.
-#' @references M.-L. Charpignon, B. Vakulenko-Lagun, B. Zheng, C. Magdamo, B. Su, K.E. Evans, S. Rodriguez, et al. 2020. Metformin's relationship with dementia and survival in emulated trials of real-world patient data and in systems pharmacology. submitted.
+#' @references M.-L. Charpignon, B. Vakulenko-Lagun, B. Zheng, C. Magdamo, B. Su, K.E. Evans, S. Rodriguez, et al. 2021. Metformin's relationship with dementia and survival in emulated trials of real-world patient data and in systems pharmacology. submitted.
 #' @references F. Li, K.L. Morgan, and A.M. Zaslavsky. 2018. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
 #'
 #' @import survival

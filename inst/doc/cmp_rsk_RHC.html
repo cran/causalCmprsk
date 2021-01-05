@@ -12,7 +12,7 @@
 
 <meta name="author" content="Bella Vakulenko-Lagun, Colin Magdamo, Marie-Laure Charpignon, Bang Zheng, Mark Albers, Sudeshna Das" />
 
-<meta name="date" content="2020-11-03" />
+<meta name="date" content="2021-01-04" />
 
 <title>Nonparametric and Cox-based estimation of ATE in competing risks using ‘causalCmprsk’ package</title>
 
@@ -586,7 +586,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Nonparametric and Cox-based estimation of ATE in competing risks using ‘causalCmprsk’ package</h1>
 <h4 class="author"><a href="https://stat.hevra.haifa.ac.il/index.php/en/academic-staff-he/bella-vakulenko-lagun">Bella Vakulenko-Lagun</a>, Colin Magdamo, Marie-Laure Charpignon, Bang Zheng, Mark Albers, Sudeshna Das</h4>
-<h4 class="date">2020-11-03</h4>
+<h4 class="date">2021-01-04</h4>
 
 
 <div id="TOC">
@@ -630,7 +630,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </ul>
 </div>
 
-<p>The <code>causalCmprsk</code> package accompanies the paper of <span class="citation">Charpignon et al. (2020)</span> and is designed for estimation of average treatment effects (ATE) of two static treatment regimes on time-to-event outcomes with <span class="math inline">\(K\geq 1\)</span> competing events.</p>
+<p>The <code>causalCmprsk</code> package accompanies the paper of <span class="citation">Charpignon et al. (2021)</span> and is designed for estimation of average treatment effects (ATE) of two static treatment regimes on time-to-event outcomes with <span class="math inline">\(K\geq 1\)</span> competing events.</p>
 <div id="why-causalcmprsk" class="section level1">
 <h1>Why <code>causalCmprsk</code>?</h1>
 <hr />
@@ -648,7 +648,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 <div id="right-heart-catheterization-rhc-data" class="section level1">
 <h1>Right Heart Catheterization (RHC) data</h1>
 <hr />
-<p>We will illustrate how to use <code>causalCmprsk</code> package by analyzing data from an observational study on right heart catheterization (RHC) procedure. The data were obtained from <a href="http://biostat.mc.vanderbilt.edu/DataSets" class="uri">http://biostat.mc.vanderbilt.edu/DataSets</a>.</p>
+<p>We will illustrate how to use <code>causalCmprsk</code> package by analyzing data from an observational study on right heart catheterization (RHC) procedure. The data were obtained from <a href="http://hbiostat.org/data" class="uri">http://hbiostat.org/data</a> courtesy of the Vanderbilt University Department of Biostatistics.</p>
 <p>RHC data were collected by <span class="citation">Connors et al. (1996)</span> with the aim to evaluate the effectiveness and safety of RHC procedure for critically ill patients admitted to ICUs. The study of <span class="citation">Connors et al. (1996)</span> appeared to be influential since most of the physicians strongly believed in the benefits of RHC procedure, and therefore conducting a clinical trial to test RHC was unethical. <span class="citation">Connors et al. (1996)</span> collected an extensive set of covariates in order to adjust for treatment assignment bias, and their results showed that RHC might be harmful. Following that, this data set drew attention of many researchers, the data were multiply reanalyzed, for example, by <span class="citation">Lin, Psaty, and Kronmal (1998)</span>, <span class="citation">Tan (2006)</span>, <span class="citation">F. Li, Morgan, and Zaslavsky (2018)</span>, <span class="citation">Love (2019)</span>, <span class="citation">Mao and Li (2020)</span>, <span class="citation">Cui and Tchetgen Tchetgen (2020)</span>, among many others.</p>
 <p>RHC data contain information on 5735 critically-ill patients who were considered for RHC procedure on their admission to an ICU. Out of 5735 patients, 2184 did RHC test and the remaining 3551 did not. The information on their baseline characteristics collected by <span class="citation">Connors et al. (1996)</span> is very rich. The follow-up on their survival was long, with the maximum follow-up time of 5 years and 4 months.</p>
 <p>The data were analyzed for different outcomes derived from the original data set. Initially, the interest was in 30-day survival following RHC procedure or a decision of not doing RHC with a binary indicator of 30-day survival. <span class="citation">Connors et al. (1996)</span>, <span class="citation">F. Li, Morgan, and Zaslavsky (2018)</span> and <span class="citation">Cui and Tchetgen Tchetgen (2020)</span> used this binary outcome. <span class="citation">Tan (2006)</span> used a survival outcome with censoring at 30 days.
@@ -690,7 +690,7 @@ CIF_a(t, k)=E\left[I_{(T^a \leq t, E^a=k)}\right]=P(T^a \leq t, E^a=k), \quad k=
 Figure 1: A single-world competing risks model with two events <em>discharge</em> and <em>in-hospital death</em>.
 </p>
 </div>
-<p>Hazards <span class="math inline">\(h_k^a(t)\)</span> are usually interpreted as rates of the competing processes, and <span class="math inline">\(CIF_a(t, k)\)</span> are often called <strong>risk</strong> functions - see, e.g., <span class="citation">Andersen et al. (2012)</span> and <span class="citation">Cole et al. (2015)</span>. For a more detailed definition of <span class="math inline">\(CIF_a(t, k)\)</span>, we refer to <span class="citation">Charpignon et al. (2020)</span> (Methods section).</p>
+<p>Hazards <span class="math inline">\(h_k^a(t)\)</span> are usually interpreted as rates of the competing processes, and <span class="math inline">\(CIF_a(t, k)\)</span> are often called <strong>risk</strong> functions - see, e.g., <span class="citation">Andersen et al. (2012)</span> and <span class="citation">Cole et al. (2015)</span>. For a more detailed definition of <span class="math inline">\(CIF_a(t, k)\)</span>, we refer to <span class="citation">Charpignon et al. (2021)</span> (Methods section).</p>
 <div id="hazards-ratios-hr-risk-differences-rd-and-risk-ratios-rr" class="section level3">
 <h3>Hazards ratios (HR), risk differences (RD) and risk ratios (RR)</h3>
 <p>The hazard ratios for both events are defined by
@@ -796,7 +796,7 @@ This model assumes that the cause-specific hazards are proportional in two count
 HR_k(t)=\frac{h^1_k(t)}{h^0_k(t)}=\frac{h^0_k(t)\exp(\beta_k)}{h^0_k(t)}=\exp(\beta_k)=HR_k,
 \]</span>
 and a proportionality factor between them is <span class="math inline">\(\exp(\beta_k)\)</span>. This outcome model implies time-invariant hazard ratios, <span class="math inline">\(HR_k\)</span>.</p>
-<p>The balancing weights that aim to adjust for the treatment assignment selection bias, play a role of “case weights” where the contribution of each observation is <span class="math inline">\(w_i\)</span> instead of 1. For more details on the implemented Cox-based estimation, and for the explicit expressions of the estimating equations and the estimators we refer to <span class="citation">Charpignon et al. (2020)</span> (Methods section).</p>
+<p>The balancing weights that aim to adjust for the treatment assignment selection bias, play a role of “case weights” where the contribution of each observation is <span class="math inline">\(w_i\)</span> instead of 1. For more details on the implemented Cox-based estimation, and for the explicit expressions of the estimating equations and the estimators we refer to <span class="citation">Charpignon et al. (2021)</span> (Methods section).</p>
 </div>
 <div id="nonparametric-estimation" class="section level3">
 <h3>Nonparametric estimation</h3>
@@ -861,36 +861,8 @@ This bootstrap estimator takes into account the uncertainty that comes from both
 <div id="reading-cleaning-and-preparing-data" class="section level2">
 <h2>Reading, cleaning and preparing data</h2>
 <p>We follow the steps of <span class="citation">Love (2019)</span> of reading, reformatting, reordering and cleaning RHC data:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>column_types_rhc &lt;-<span class="st"> </span></span>
-<span id="cb2-2"><a href="#cb2-2"></a><span class="st">  </span><span class="kw">cols</span>(<span class="dt">urin1 =</span> <span class="st">&quot;d&quot;</span>, <span class="dt">meanbp1 =</span> <span class="st">&quot;d&quot;</span>, <span class="dt">resp1 =</span> <span class="st">&quot;d&quot;</span>,</span>
-<span id="cb2-3"><a href="#cb2-3"></a>       <span class="dt">swang1 =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No RHC&quot;</span>, <span class="st">&quot;RHC&quot;</span>)),</span>
-<span id="cb2-4"><a href="#cb2-4"></a>       <span class="dt">death =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-5"><a href="#cb2-5"></a>       <span class="dt">sex =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;Male&quot;</span>, <span class="st">&quot;Female&quot;</span>)),</span>
-<span id="cb2-6"><a href="#cb2-6"></a>       <span class="dt">cat1 =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;ARF&quot;</span>, <span class="st">&quot;CHF&quot;</span>, <span class="st">&quot;Cirrhosis&quot;</span>, <span class="st">&quot;Colon Cancer&quot;</span>, <span class="st">&quot;Coma&quot;</span>, <span class="st">&quot;COPD&quot;</span>,</span>
-<span id="cb2-7"><a href="#cb2-7"></a>                           <span class="st">&quot;Lung Cancer&quot;</span>, <span class="st">&quot;MOSF w/Malignancy&quot;</span>, <span class="st">&quot;MOSF w/Sepsis&quot;</span>)),</span>
-<span id="cb2-8"><a href="#cb2-8"></a>       <span class="co"># Cat1 - Primary disease category</span></span>
-<span id="cb2-9"><a href="#cb2-9"></a>       <span class="dt">cat2 =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;ARF&quot;</span>, <span class="st">&quot;CHF&quot;</span>, <span class="st">&quot;Cirrhosis&quot;</span>, <span class="st">&quot;Colon Cancer&quot;</span>, <span class="st">&quot;Coma&quot;</span>, <span class="st">&quot;COPD&quot;</span>,</span>
-<span id="cb2-10"><a href="#cb2-10"></a>                           <span class="st">&quot;Lung Cancer&quot;</span>, <span class="st">&quot;MOSF w/Malignancy&quot;</span>, <span class="st">&quot;MOSF w/Sepsis&quot;</span>)),</span>
-<span id="cb2-11"><a href="#cb2-11"></a>       <span class="co"># Cat2 - Secondary disease category</span></span>
-<span id="cb2-12"><a href="#cb2-12"></a>       <span class="dt">dnr1 =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-13"><a href="#cb2-13"></a>       <span class="dt">card =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-14"><a href="#cb2-14"></a>       <span class="dt">gastr =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-15"><a href="#cb2-15"></a>       <span class="dt">hema =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-16"><a href="#cb2-16"></a>       <span class="dt">meta =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-17"><a href="#cb2-17"></a>       <span class="dt">neuro =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-18"><a href="#cb2-18"></a>       <span class="dt">ortho =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-19"><a href="#cb2-19"></a>       <span class="dt">renal =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-20"><a href="#cb2-20"></a>       <span class="dt">resp =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-21"><a href="#cb2-21"></a>       <span class="dt">seps =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-22"><a href="#cb2-22"></a>       <span class="dt">trauma =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>)),</span>
-<span id="cb2-23"><a href="#cb2-23"></a>       <span class="dt">income =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;Under $11k&quot;</span>, <span class="st">&quot;$11-$25k&quot;</span>, <span class="st">&quot;$25-$50k&quot;</span>, <span class="st">&quot;&gt; $50k&quot;</span>)),</span>
-<span id="cb2-24"><a href="#cb2-24"></a>       <span class="dt">ninsclas =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;Private&quot;</span>, <span class="st">&quot;Private &amp; Medicare&quot;</span>, <span class="st">&quot;Medicare&quot;</span>, </span>
-<span id="cb2-25"><a href="#cb2-25"></a>                               <span class="st">&quot;Medicare &amp; Medicaid&quot;</span>, <span class="st">&quot;Medicaid&quot;</span>, <span class="st">&quot;No insurance&quot;</span>)),</span>
-<span id="cb2-26"><a href="#cb2-26"></a>       <span class="dt">race =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;white&quot;</span>, <span class="st">&quot;black&quot;</span>, <span class="st">&quot;other&quot;</span>)),</span>
-<span id="cb2-27"><a href="#cb2-27"></a>       <span class="dt">ca =</span> <span class="kw">col_factor</span>(<span class="kw">c</span>(<span class="st">&quot;No&quot;</span>, <span class="st">&quot;Yes&quot;</span>, <span class="st">&quot;Metastatic&quot;</span>))</span>
-<span id="cb2-28"><a href="#cb2-28"></a>  )</span>
-<span id="cb2-29"><a href="#cb2-29"></a><span class="kw">suppressWarnings</span>(rhc_raw &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/rhc.csv&quot;</span>, </span>
-<span id="cb2-30"><a href="#cb2-30"></a>                    <span class="dt">col_types =</span> column_types_rhc))</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">getHdata</span>(rhc) <span class="co"># loading data using the Hmisc package</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>rhc_raw &lt;-<span class="st"> </span>rhc</span></code></pre></div>
 <p>We will not use variables <code>adld3p</code> and <code>urin1</code> due to the high percent of missing values:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>miss.report &lt;-<span class="st"> </span>rhc_raw <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">miss_var_summary</span>()</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="kw">kable</span>(miss.report[<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,]) <span class="op">%&gt;%</span></span>
@@ -967,17 +939,6 @@ dschdte
 </tr>
 <tr>
 <td style="text-align:left;">
-X1
-</td>
-<td style="text-align:right;">
-0
-</td>
-<td style="text-align:right;">
-0.0000000
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 cat1
 </td>
 <td style="text-align:right;">
@@ -1012,6 +973,17 @@ sadmdte
 <tr>
 <td style="text-align:left;">
 lstctdte
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0.0000000
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+death
 </td>
 <td style="text-align:right;">
 0
@@ -1327,7 +1299,7 @@ Figure 3: Checking goodness-of-fit of a PS model with selection of significant c
 <span id="cb16-2"><a href="#cb16-2"></a><span class="kw">ggplot</span>(rhc.ps, <span class="kw">aes</span>(<span class="dt">x =</span> ps, <span class="dt">fill =</span> trt, <span class="dt">color=</span>trt)) <span class="op">+</span><span class="st">  </span><span class="kw">geom_density</span>(<span class="dt">alpha =</span> <span class="fl">0.5</span>) <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_npg</span>() <span class="op">+</span><span class="st"> </span><span class="kw">scale_color_npg</span>()<span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">plot.title =</span> <span class="kw">element_text</span>(<span class="dt">hjust =</span> <span class="fl">0.5</span>), <span class="dt">legend.position =</span> <span class="kw">c</span>(<span class="fl">0.8</span>, <span class="fl">0.8</span>),</span>
 <span id="cb16-3"><a href="#cb16-3"></a>          <span class="dt">legend.background=</span><span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;transparent&quot;</span>))</span></code></pre></div>
 <div class="figure" style="text-align: center"><span id="fig:fig9"></span>
-<img src="data:image/png;base64,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" alt="Checking overlap in PS distributions." />
+<img src="data:image/png;base64,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" alt="Checking overlap in PS distributions." />
 <p class="caption">
 Figure 4: Checking overlap in PS distributions.
 </p>
@@ -1548,7 +1520,7 @@ age
 16.68
 </td>
 <td style="text-align:right;">
-50.16
+50.15
 </td>
 <td style="text-align:right;">
 64.05
@@ -4811,6 +4783,8 @@ Figure 9: Distribution of stab.ATE weights.
 <thead>
 <tr>
 <th style="text-align:left;">
+</th>
+<th style="text-align:left;">
 trt
 </th>
 <th style="text-align:right;">
@@ -4827,10 +4801,13 @@ ps
 <tbody>
 <tr>
 <td style="text-align:left;">
+505
+</td>
+<td style="text-align:left;">
 No RHC
 </td>
 <td style="text-align:right;">
-17.82321
+17.82322
 </td>
 <td style="text-align:right;">
 0.9652538
@@ -4841,19 +4818,25 @@ No RHC
 </tr>
 <tr>
 <td style="text-align:left;">
+1000
+</td>
+<td style="text-align:left;">
 No RHC
 </td>
 <td style="text-align:right;">
-14.74339
+14.74340
 </td>
 <td style="text-align:right;">
-0.9579955
+0.9579956
 </td>
 <td style="text-align:right;">
-0.9579955
+0.9579956
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+2174
+</td>
 <td style="text-align:left;">
 No RHC
 </td>
@@ -4869,10 +4852,13 @@ No RHC
 </tr>
 <tr>
 <td style="text-align:left;">
+3145
+</td>
+<td style="text-align:left;">
 No RHC
 </td>
 <td style="text-align:right;">
-13.41334
+13.41335
 </td>
 <td style="text-align:right;">
 0.9538304
@@ -4883,10 +4869,13 @@ No RHC
 </tr>
 <tr>
 <td style="text-align:left;">
+3216
+</td>
+<td style="text-align:left;">
 No RHC
 </td>
 <td style="text-align:right;">
-15.75660
+15.75661
 </td>
 <td style="text-align:right;">
 0.9606966
@@ -4896,6 +4885,9 @@ No RHC
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+4007
+</td>
 <td style="text-align:left;">
 No RHC
 </td>
@@ -4911,10 +4903,13 @@ No RHC
 </tr>
 <tr>
 <td style="text-align:left;">
+4131
+</td>
+<td style="text-align:left;">
 RHC
 </td>
 <td style="text-align:right;">
-10.45645
+10.45646
 </td>
 <td style="text-align:right;">
 0.9635908
@@ -4924,6 +4919,9 @@ RHC
 </td>
 </tr>
 <tr>
+<td style="text-align:left;">
+4889
+</td>
 <td style="text-align:left;">
 RHC
 </td>
@@ -4968,7 +4966,7 @@ In contrast to this finding, <span class="citation">Love (2019)</span> shows tha
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># overlap weights========================:</span></span>
 <span id="cb26-2"><a href="#cb26-2"></a><span class="co"># Nonparametric estimation:</span></span>
 <span id="cb26-3"><a href="#cb26-3"></a>res.overlap &lt;-<span class="st"> </span><span class="kw">fit.nonpar</span>(<span class="dt">df=</span>rhc, <span class="dt">X=</span><span class="st">&quot;T&quot;</span>, <span class="dt">E=</span><span class="st">&quot;E&quot;</span>, <span class="dt">A=</span><span class="st">&quot;RHC&quot;</span>, <span class="dt">C=</span>covs.names, </span>
-<span id="cb26-4"><a href="#cb26-4"></a>                          <span class="dt">wtype=</span><span class="st">&quot;overlap&quot;</span>, <span class="dt">cens=</span><span class="dv">0</span>, <span class="dt">conf.level=</span><span class="fl">0.95</span>, <span class="dt">bs=</span><span class="ot">TRUE</span>, <span class="dt">nbs.rep=</span><span class="dv">80</span>, <span class="dt">seed=</span><span class="dv">17</span>, <span class="dt">parallel =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>                          <span class="dt">wtype=</span><span class="st">&quot;overlap&quot;</span>, <span class="dt">cens=</span><span class="dv">0</span>, <span class="dt">conf.level=</span><span class="fl">0.95</span>, <span class="dt">bs=</span><span class="ot">TRUE</span>, <span class="dt">nbs.rep=</span><span class="dv">80</span>, <span class="dt">seed=</span><span class="dv">17</span>, <span class="dt">parallel =</span> <span class="ot">FALSE</span>) <span class="co"># The small number of bootstrap replications (nbs.rep=80) was chosen for illustration purposes.  </span></span>
 <span id="cb26-5"><a href="#cb26-5"></a><span class="co"># Cox-based estimation:</span></span>
 <span id="cb26-6"><a href="#cb26-6"></a>res.cox.overlap &lt;-<span class="st"> </span><span class="kw">fit.cox</span>(<span class="dt">df=</span>rhc, <span class="dt">X=</span><span class="st">&quot;T&quot;</span>, <span class="dt">E=</span><span class="st">&quot;E&quot;</span>, <span class="dt">A=</span><span class="st">&quot;RHC&quot;</span>, <span class="dt">C=</span>covs.names, </span>
 <span id="cb26-7"><a href="#cb26-7"></a>                          <span class="dt">wtype=</span><span class="st">&quot;overlap&quot;</span>, <span class="dt">cens=</span><span class="dv">0</span>, <span class="dt">conf.level=</span><span class="fl">0.95</span>, <span class="dt">bs=</span><span class="ot">TRUE</span>, <span class="dt">nbs.rep=</span><span class="dv">80</span>, <span class="dt">seed=</span><span class="dv">17</span>, <span class="dt">parallel =</span> <span class="ot">FALSE</span>)</span>
@@ -5562,7 +5560,7 @@ Figure 21: Difference in average time lost due to RHC in the 30-day mortality.
 <p>Calkins, K. L., C. E. Canan, R. D. Moore, C. R. Lesko, and B. Lau. 2018. “An Application of Restricted Mean Survival Time in a Competing Risks Setting: Comparing Time to Art Initiation by Injection Drug Use.” <em>BMC Medical Research Methodology</em> 18 (27).</p>
 </div>
 <div id="ref-ADmet">
-<p>Charpignon, M.-L., B. Vakulenko-Lagun, B. Zheng, C. Magdamo, B. Su, K. E. Evans, S. Rodriguez, et al. 2020. “Uncovering the Links Between Metformin, Dementia and Aging Using Emulated Trials in EHR and Systems Pharmacology.” <em>Submitted</em>.</p>
+<p>Charpignon, M.-L., B. Vakulenko-Lagun, B. Zheng, C. Magdamo, B. Su, K. E. Evans, S. Rodriguez, et al. 2021. “Metformin’s Relationship with Dementia and Survival in Emulated Trials of Real-World Patient Data and in Systems Pharmacology.” <em>Submitted</em>.</p>
 </div>
 <div id="ref-cole2">
 <p>Cole, S. R., M. G. Hudgens, A. Brookhart, and D. Westreich. 2015. “Risk.” <em>American Journal of Epidemiology</em> 181 (4): 246–50.</p>

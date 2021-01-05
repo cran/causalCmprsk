@@ -27,36 +27,8 @@ st_options(plain.ascii = FALSE,        # Always use this option in Rmd documents
           subtitle.emphasis = FALSE)   # Improves layout with some rmardown themes
 
 ## ----code1, echo=TRUE---------------------------------------------------------
-column_types_rhc <- 
-  cols(urin1 = "d", meanbp1 = "d", resp1 = "d",
-       swang1 = col_factor(c("No RHC", "RHC")),
-       death = col_factor(c("No", "Yes")),
-       sex = col_factor(c("Male", "Female")),
-       cat1 = col_factor(c("ARF", "CHF", "Cirrhosis", "Colon Cancer", "Coma", "COPD",
-                           "Lung Cancer", "MOSF w/Malignancy", "MOSF w/Sepsis")),
-       # Cat1 - Primary disease category
-       cat2 = col_factor(c("ARF", "CHF", "Cirrhosis", "Colon Cancer", "Coma", "COPD",
-                           "Lung Cancer", "MOSF w/Malignancy", "MOSF w/Sepsis")),
-       # Cat2 - Secondary disease category
-       dnr1 = col_factor(c("No", "Yes")),
-       card = col_factor(c("No", "Yes")),
-       gastr = col_factor(c("No", "Yes")),
-       hema = col_factor(c("No", "Yes")),
-       meta = col_factor(c("No", "Yes")),
-       neuro = col_factor(c("No", "Yes")),
-       ortho = col_factor(c("No", "Yes")),
-       renal = col_factor(c("No", "Yes")),
-       resp = col_factor(c("No", "Yes")),
-       seps = col_factor(c("No", "Yes")),
-       trauma = col_factor(c("No", "Yes")),
-       income = col_factor(c("Under $11k", "$11-$25k", "$25-$50k", "> $50k")),
-       ninsclas = col_factor(c("Private", "Private & Medicare", "Medicare", 
-                               "Medicare & Medicaid", "Medicaid", "No insurance")),
-       race = col_factor(c("white", "black", "other")),
-       ca = col_factor(c("No", "Yes", "Metastatic"))
-  )
-suppressWarnings(rhc_raw <- read_csv("http://biostat.mc.vanderbilt.edu/wiki/pub/Main/DataSets/rhc.csv", 
-                    col_types = column_types_rhc))
+getHdata(rhc) # loading data using the Hmisc package
+rhc_raw <- rhc
 
 ## -----------------------------------------------------------------------------
 miss.report <- rhc_raw %>% miss_var_summary()
@@ -299,7 +271,7 @@ ggplot(rhc.ps, aes(x = overlap.w, fill = trt, color=trt)) +
 # overlap weights========================:
 # Nonparametric estimation:
 res.overlap <- fit.nonpar(df=rhc, X="T", E="E", A="RHC", C=covs.names, 
-                          wtype="overlap", cens=0, conf.level=0.95, bs=TRUE, nbs.rep=80, seed=17, parallel = FALSE)
+                          wtype="overlap", cens=0, conf.level=0.95, bs=TRUE, nbs.rep=80, seed=17, parallel = FALSE) # The small number of bootstrap replications (nbs.rep=80) was chosen for illustration purposes.  
 # Cox-based estimation:
 res.cox.overlap <- fit.cox(df=rhc, X="T", E="E", A="RHC", C=covs.names, 
                           wtype="overlap", cens=0, conf.level=0.95, bs=TRUE, nbs.rep=80, seed=17, parallel = FALSE)

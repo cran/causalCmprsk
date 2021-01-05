@@ -20,7 +20,7 @@ that will estimate treatment effects in the raw (observed) data.}
 
 \item{wtype}{a character string variable indicating the type of weights that will define the target
 population for which the ATE will be estimated.
-The default is "stab.ATE" defined as P(A=a)/P(A=a|C=c) - see Hernan et al. (2000).
+The default is "stab.ATE" defined as P(A=a)/P(A=a|C=c) - see Hernán et al. (2000).
 Other possible values are "ATE", "ATT", "ATC", and "overlap".
 See Table 1 from Li, Morgan, and Zaslavsky (2018).}
 
@@ -78,7 +78,7 @@ hist(wei$ps[data$TRT==0], col="blue", breaks = seq(0,1,0.05))
 \references{
 F. Li, K.L. Morgan, and A.M. Zaslavsky. 2018. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
 
-M. Hernan, K.L. Morgan, and A.M. Zaslavsky. 2000. Balancing Covariates via Propensity Score Weighting. Journal of the American Statistical Association 113 (521): 390–400.
+M.A. Hernán, B. Brumback, and J.M. Robins. 2000. Marginal structural models and to estimate the causal effect of zidovudine on the survival of HIV-positive men. Epidemiology, 11 (5): 561-570.
 }
 \seealso{
 \code{\link{fit.nonpar}}, \code{\link{fit.cox}}, \code{\link{causalCmprsk}}
