@@ -1,16 +1,29 @@
 ## ----label= fig1, fig.cap="A single-world competing risks model with two events *discharge* and *in-hospital death*.", echo=FALSE, fig.align="center", out.width = "60%"----
     knitr::include_graphics('RHC_cmp_rsk.png')
 
-## ----cran_packages, echo=TRUE, include=TRUE, message=FALSE, warning=FALSE-----
+## -----------------------------------------------------------------------------
 pckgs <- c("knitr", "tidyverse", "ggalt", "cobalt", "ggsci",
     "modEvA", "naniar", "DT", "Hmisc", "hrbrthemes", "summarytools", 
     "kableExtra", "survival", "causalCmprsk")
 
+
+## ----cran_packages0, echo=TRUE, include=TRUE, message=FALSE, warning=FALSE----
+ix=NULL
 for (package in pckgs)
+  if (!requireNamespace(package, quietly = TRUE)) ix <- c(ix, package)
+if (length(ix)!=0)
 {
-  if (!requireNamespace(package, quietly = TRUE)) install.packages(package)
-    library(package, character.only=TRUE) 
+pr <- "WARNING: Packages: "
+for (i in ix) 
+  pr <- paste(pr, i, sep="")
+pr <- paste(pr, "\nhave to be installed in order to successfully compile the rest of the vignette. Please install these packages and compile again.", sep="")
+cat(pr)
+knitr::knit_exit()
 }
+
+## ----cran_packages, echo=TRUE, include=TRUE, message=FALSE, warning=FALSE-----
+for (package in pckgs)
+  library(package, character.only=TRUE) 
 
 opts_chunk$set(results = 'asis',      # Can also be set at the chunk-level
                  comment = NA,

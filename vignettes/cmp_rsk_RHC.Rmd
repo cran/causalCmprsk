@@ -297,17 +297,32 @@ In survival data, the Bayesian bootstrap is expected to provide a more stable al
 
 # Analysis of RHC data
 ***
-
-```{r cran_packages, echo=TRUE, include=TRUE, message=FALSE, warning=FALSE}
+```{r}
 pckgs <- c("knitr", "tidyverse", "ggalt", "cobalt", "ggsci",
     "modEvA", "naniar", "DT", "Hmisc", "hrbrthemes", "summarytools", 
     "kableExtra", "survival", "causalCmprsk")
 
+```
+
+```{r cran_packages0, echo=TRUE, include=TRUE, message=FALSE, warning=FALSE}
+ix=NULL
 for (package in pckgs)
+  if (!requireNamespace(package, quietly = TRUE)) ix <- c(ix, package)
+if (length(ix)!=0)
 {
-  if (!requireNamespace(package, quietly = TRUE)) install.packages(package)
-    library(package, character.only=TRUE) 
+pr <- "WARNING: Packages: "
+for (i in ix) 
+  pr <- paste(pr, i, sep="")
+pr <- paste(pr, "\nhave to be installed in order to successfully compile the rest of the vignette. Please install these packages and compile again.", sep="")
+cat(pr)
+knitr::knit_exit()
 }
+```
+
+
+```{r cran_packages, echo=TRUE, include=TRUE, message=FALSE, warning=FALSE}
+for (package in pckgs)
+  library(package, character.only=TRUE) 
 
 opts_chunk$set(results = 'asis',      # Can also be set at the chunk-level
                  comment = NA,
