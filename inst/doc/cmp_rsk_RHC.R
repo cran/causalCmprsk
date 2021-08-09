@@ -2,32 +2,27 @@
     knitr::include_graphics('RHC_cmp_rsk.png')
 
 ## ----cran_packages, echo=TRUE, include=TRUE, message=FALSE, warning=FALSE-----
-library(survival)
-library(tidyverse)
-library(ggalt) # for stepribbon
-library(cobalt)
-library(ggsci) # Nature Color palette
-library(modEvA) # for H-L GOF test
-library(naniar) # for exploring missingness 
-library(knitr)
-library(kableExtra)
-library(summarytools)  
-library(DT) 
-library(Hmisc)
+pckgs <- c("knitr", "tidyverse", "ggalt", "cobalt", "ggsci",
+    "modEvA", "naniar", "DT", "Hmisc", "hrbrthemes", "summarytools", 
+    "kableExtra", "survival", "causalCmprsk")
 
-library(causalCmprsk)
+for (package in pckgs)
+{
+  if (!requireNamespace(package, quietly = TRUE)) install.packages(package)
+    library(package, character.only=TRUE) 
+}
 
 opts_chunk$set(results = 'asis',      # Can also be set at the chunk-level
-                comment = NA,
-                prompt  = FALSE,
-                cache   = FALSE)
-st_options(plain.ascii = FALSE,        # Always use this option in Rmd documents
+                 comment = NA,
+                 prompt  = FALSE,
+                 cache   = FALSE)
+summarytools::st_options(plain.ascii = FALSE,        # Always use this option in Rmd documents
           style        = "rmarkdown",  # Always use this option in Rmd documents
           footnote     = NA,           # Makes html-rendered results more concise
           subtitle.emphasis = FALSE)   # Improves layout with some rmardown themes
 
 ## ----code1, echo=TRUE---------------------------------------------------------
-getHdata(rhc) # loading data using the Hmisc package
+Hmisc::getHdata(rhc) # loading data using the Hmisc package
 rhc_raw <- rhc
 
 ## -----------------------------------------------------------------------------

@@ -1,12 +1,12 @@
-277c00091708e352eade1d8ccba8ed17 *DESCRIPTION
+cd1a395d5e0c6654ff98270207bea495 *DESCRIPTION
 a3e4ab8237d04919c460c361b373e53a *NAMESPACE
 3cd479dba0a94c47196860231f12cc14 *R/causalCmprsk-functions.R
 c3b3f430f684511ab34b932a7fa542d1 *R/causalCmprsk.R
-5cb895773ed7e0a66f2cb4354b049e33 *README.md
-194ff1e4e6b80124133cd15a74bb08dc *build/vignette.rds
-2aeddb342a94aa3535601caa99176a1e *inst/doc/cmp_rsk_RHC.R
-96c49567b6ec96598da116d05367ef99 *inst/doc/cmp_rsk_RHC.Rmd
-756b6154794c31c3d94810f6150b8be1 *inst/doc/cmp_rsk_RHC.html
+f681ac4b8ccede4db851889a905e6934 *README.md
+f23ea00acbedb6f5e8e89d588409e131 *build/vignette.rds
+3cefe19c58052b83a13d078f684c1c32 *inst/doc/cmp_rsk_RHC.R
+54910a1d47bb2e1cabcab1e09fdb0f7f *inst/doc/cmp_rsk_RHC.Rmd
+378c6c13725b0862212e33e5e594614b *inst/doc/cmp_rsk_RHC.html
 61b442c88ae58c9762253651a92425c6 *man/causalCmprsk.Rd
 4d0217021481d03db64e3ee495f93d78 *man/fit.cox.Rd
 e0cccc97479091f3f6bb18beaf31dc2a *man/fit.nonpar.Rd
@@ -14,6 +14,6 @@ e0cccc97479091f3f6bb18beaf31dc2a *man/fit.nonpar.Rd
 df8451b237a87cf4e04919e7033c3ceb *man/get.pointEst.Rd
 d9c3b3656f7e20c96f20fac5e9665f73 *man/get.weights.Rd
 8bf98995f6e3fcf111de6e3a5b0859b7 *vignettes/RHC_cmp_rsk.png
-96c49567b6ec96598da116d05367ef99 *vignettes/cmp_rsk_RHC.Rmd
-f495ff5ddf46a8c121eca85dfe491311 *vignettes/references.bib
+54910a1d47bb2e1cabcab1e09fdb0f7f *vignettes/cmp_rsk_RHC.Rmd
+5d9d32b5637251089f1af2786fc0b227 *vignettes/references.bib
 59a16608cdb16a4a83cfa2f44042ae66 *vignettes/styles.css

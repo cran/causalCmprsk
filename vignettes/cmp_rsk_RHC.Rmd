@@ -47,9 +47,9 @@ The `causalCmprsk` package accompanies the paper of @ADmet and is designed for e
 # Right Heart Catheterization (RHC) data
 ***
 
-We will illustrate how to use `causalCmprsk` package by analyzing data from an observational study on right heart catheterization (RHC) procedure. The data were obtained from http://hbiostat.org/data courtesy of the Vanderbilt University Department of Biostatistics.
+We will illustrate how to use `causalCmprsk` package by analyzing data from an observational study on right heart catheterization (RHC) procedure. The data were obtained from http://hbiostat.org/data/ courtesy of the Vanderbilt University Department of Biostatistics.
 
-RHC data were collected by @Connors with the aim to evaluate the effectiveness and safety of RHC procedure for critically ill patients admitted to ICUs. The study of @Connors appeared to be influential since most of the physicians strongly believed in the benefits of RHC procedure, and therefore conducting a clinical trial to test RHC was unethical. @Connors collected an extensive set of covariates in order to adjust for treatment assignment bias, and their results showed that RHC might be harmful. Following that, this data set drew attention of many researchers, the data were multiply reanalyzed, for example, by @Lin, @Tan2006, @Zaslavsky, @Love, @Mao, @Tchetgen, among many others.
+RHC data were collected by @Connors with the aim to evaluate the effectiveness and safety of RHC procedure for critically ill patients admitted to ICUs. The study of @Connors appeared to be influential since most of the physicians strongly believed in the benefits of RHC procedure, and therefore conducting a clinical trial to test RHC was unethical. @Connors collected an extensive set of covariates in order to adjust for treatment assignment bias, and their results showed that RHC might be harmful. Following that, this data set drew attention of many researchers, the data were multiply reanalyzed, for example, by @Lin, @Tan2006, @Zaslavsky, @Mao, @Tchetgen, among many others.
 
 RHC data contain information on 5735 critically-ill patients who were considered for RHC procedure on their admission to an ICU. Out of 5735 patients, 2184 did RHC test and the remaining 3551 did not. The information on their baseline characteristics collected by @Connors is very rich.  The follow-up on their survival was long, with the maximum follow-up time of 5 years and 4 months.
 
@@ -299,38 +299,32 @@ In survival data, the Bayesian bootstrap is expected to provide a more stable al
 ***
 
 ```{r cran_packages, echo=TRUE, include=TRUE, message=FALSE, warning=FALSE}
-library(survival)
-library(tidyverse)
-library(ggalt) # for stepribbon
-library(cobalt)
-library(ggsci) # Nature Color palette
-library(modEvA) # for H-L GOF test
-library(naniar) # for exploring missingness 
-library(knitr)
-library(kableExtra)
-library(summarytools)  
-library(DT) 
-library(Hmisc)
+pckgs <- c("knitr", "tidyverse", "ggalt", "cobalt", "ggsci",
+    "modEvA", "naniar", "DT", "Hmisc", "hrbrthemes", "summarytools", 
+    "kableExtra", "survival", "causalCmprsk")
 
-library(causalCmprsk)
+for (package in pckgs)
+{
+  if (!requireNamespace(package, quietly = TRUE)) install.packages(package)
+    library(package, character.only=TRUE) 
+}
 
 opts_chunk$set(results = 'asis',      # Can also be set at the chunk-level
-                comment = NA,
-                prompt  = FALSE,
-                cache   = FALSE)
-st_options(plain.ascii = FALSE,        # Always use this option in Rmd documents
+                 comment = NA,
+                 prompt  = FALSE,
+                 cache   = FALSE)
+summarytools::st_options(plain.ascii = FALSE,        # Always use this option in Rmd documents
           style        = "rmarkdown",  # Always use this option in Rmd documents
           footnote     = NA,           # Makes html-rendered results more concise
           subtitle.emphasis = FALSE)   # Improves layout with some rmardown themes
 ```
 
 
-
 ## Reading, cleaning and preparing data
 
-We follow the steps of @Love of reading, reformatting, reordering and cleaning RHC data:
+First we read, reformat, reorder and clean the RHC data:
 ```{r code1, echo=TRUE}
-getHdata(rhc) # loading data using the Hmisc package
+Hmisc::getHdata(rhc) # loading data using the Hmisc package
 rhc_raw <- rhc
 ```
 
@@ -682,7 +676,6 @@ After estimation and diagnostics of weights, we proceed with estimation of the A
 We compare our results to the findings of @Mao, who estimated the ATE of RHC on the length-of-stay (LOS) in an ICU. This is a problematic composite outcome that combines two opposite processes, *discharge alive* and *in-hospital death* into one hard-to-interpret outcome. 
 
 @Mao's approach assumes that the effect of RHC on the LOS is time-invariant. Their estimate of the ATE on the *log(LOS)*, based on overlap weights, is 0.094 (pvalue<0.001) meaning that RHC increases the *log(LOS)* by 0.094 time points.
-In contrast to this finding, @Love shows that there is no significant difference between two treatments for this composite outcome. In these analyses, @Love uses RHC data for an illustration of different propensity score methods, and uses the HR as an effect measure.
 
 Many other studies estimated the effect of RHC on mortality and consistently showed that "applying RHC leads to a higher mortality rate than not applying RHC." (see, e.g., @Zaslavsky)
  
@@ -1165,7 +1158,7 @@ Summary of findings:
 
 - The effect of RHC procedure on the LOS changes over time.
 - There is no evidence of any effect of RHC on the LOS. The probability to leave an ICU (either alive or not) by 30 days is lower in RHC group, mostly due to the slowing-down effect of RHC on the discharge alive that is observed up to 50 days of the stay. 
-- After 50 days, although RHC increases the probability of death, on the other hand, it decreases the probability of being discharged alive (Figure \@ref(fig:fig16)). These two cause-specific probabilities are of a similar magnitude, so that they "cancel" each other, and the overall effect of RHC on the LOS, after 50 days of staying in an ICU, is close to zero. These results are in line with findings in @Love.  
+- After 50 days, although RHC increases the probability of death, on the other hand, it decreases the probability of being discharged alive (Figure \@ref(fig:fig16)). These two cause-specific probabilities are of a similar magnitude, so that they "cancel" each other, and the overall effect of RHC on the LOS, after 50 days of staying in an ICU, is close to zero.  
 
 In this example, it is clear that it has been important to distinguish between the two processes which act in the opposite directions, so that combining them into one outcome is problematic. 
 
