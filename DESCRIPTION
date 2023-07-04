@@ -2,7 +2,7 @@ Package: causalCmprsk
 Type: Package
 Title: Nonparametric and Cox-Based Estimation of Average Treatment
         Effects in Competing Risks
-Version: 1.1.0
+Version: 2.0.0
 Authors@R: c(person("Bella", "Vakulenko-Lagun", email ="blagun@stat.haifa.ac.il", role = c("aut", "cre")),
     person("Colin", "Magdamo", role = c("aut")),
     person("Marie-Laure", "Charpignon", role = c("aut")),
@@ -22,7 +22,7 @@ VignetteBuilder: knitr
 URL: https://github.com/Bella2001/causalCmprsk
 BugReports: https://github.com/Bella2001/causalCmprsk/issues
 NeedsCompilation: no
-Packaged: 2023-03-28 18:42:14 UTC; user
+Packaged: 2023-07-04 14:40:06 UTC; blagun
 Author: Bella Vakulenko-Lagun [aut, cre],
   Colin Magdamo [aut],
   Marie-Laure Charpignon [aut],
@@ -31,4 +31,4 @@ Author: Bella Vakulenko-Lagun [aut, cre],
   Sudeshna Das [aut]
 Maintainer: Bella Vakulenko-Lagun <blagun@stat.haifa.ac.il>
 Repository: CRAN
-Date/Publication: 2023-03-31 12:00:02 UTC
+Date/Publication: 2023-07-04 17:23:02 UTC
